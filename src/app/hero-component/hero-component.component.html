@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="col-sm-12">
+      <button class="btn btn-dark btn-sm" (click)="open(content)">Add hero</button>
+      <hr>
+    </div>
+  
+  <div class="form-group">
+      <div class="col-sm-12">
+        <input class="form-control form-control-sm" type="text" [(ngModel)]="searchText"/>
+      </div>
+  </div>
+  <div class="form-group">
+      <div class="col-sm-12">
+          <span class="badge badge-secondary cursor-pointer" (click)="sortField = 'Name';sortDirection=sortDirection =='asc'?'desc':'asc'">
+              <i class="fa" [ngClass]="sortField == 'Name' ? sortDirection == 'asc' ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc' : 'fa-sort'"></i> Name
+          </span>
+          <span class="badge badge-secondary cursor-pointer" (click)="sortField = 'Power';sortDirection=sortDirection =='asc'?'desc':'asc'">
+              <i class="fa" [ngClass]="sortField == 'Power' ? sortDirection == 'asc' ? 'fa-sort-alpha-asc' : 'fa-sort-alpha-desc' : 'fa-sort'"></i> Power
+          </span>
+          <div class="pull-right">
+            <div class="dropdown show" [hidden]="!selectedHeroes.length" ngbDropdown >
+              <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" ngbDropdownToggle data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Selected: {{selectedHeroes.length}}
+              </button>
+              <div class="dropdown-menu" ngbDropdownMenu >
+                  <a class="dropdown-item cursor-pointer" (click)="deleteSelected()">Delete Selected</a>
+                </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div class="row mb-3 plr-15">
+    <div class="col-sm-4 mb-2" *ngFor="let hero of Heroes | search : searchText | sort: sortField:sortDirection">
+        <div class="card cursor-pointer" [ngClass]="hero.selected ? 'selected' : ''" (click)="cardSelected(hero)" (dblclick)="editHero(content,hero)">
+          <i class="fa fa-trash action top-right" (click)="removeHero(hero,$event)"></i>
+          <div class="card-body">
+            <h4 class="card-title">{{hero.Name}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{hero.Power}}</h6>
+            <p class="card-text">{{hero.Power}}</p>
+          </div>
+        </div>
+    </div>
+  </div>
+  <!-- <span uppercase>some data</span> -->
+  <!-- <div class="col-sm-12">
+    <button class="btn btn-dark btn-sm" (click)="open(content)">Add hero</button>
+    <hr>
+  </div> -->
+  <!-- <pre>{{closeResult}}</pre> -->
+  <!-- <pre>{{temp | IdentifyType}}</pre> -->
+  
+</div>
+
+<!-- Modal template -->
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Add hero</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+   <form class="form-horizontal">
+      <div class="form-group">
+          <label for="name" class="col-sm-12 control-label">Name</label>
+          <div  class="col-sm-12" id="helloData">
+            <input type="text" [(ngModel)]="model.Name" name="name" validation="alphanumeric[1,24]" class="form-control" id="name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="name" class="col-sm-12 control-label">Power</label>
+          <div  class="col-sm-12">
+            <select class="form-control" [(ngModel)]="model.Power" name="power" required>
+              <option *ngFor="let power of powers" value="{{power}}">{{power}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="alterEgo" class="col-sm-12 control-label">Alter Ego</label>
+          <div  class="col-sm-12">
+            <input type="text" [(ngModel)]="model.AlterEgo" name="alterEgo" class="form-control" id="alterEgo">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <button type="button" *ngIf="model.Id" (click)="updatePower()" class="btn btn-dark col-sm-12">Update</button>
+            <button type="button" *ngIf="!model.Id" validate (validateClick)="savePower()" class="btn btn-dark col-sm-12">Add</button>
+          </div>
+        </div>
+   </form>
+  </div>
+  <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
+  </div> -->
+</ng-template>

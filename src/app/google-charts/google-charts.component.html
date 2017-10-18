@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link " [routerLink]="['/charts',chartId,'pie']"  routerLinkActive="active">Pie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " [routerLink]="['/charts/1/bar']"  routerLinkActive="active">Bar</a>
+            </li>
+        </ul>
+        <div class="mt-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<!-- <div class="row">
+    <div class="col-sm-6">
+        <google-chart [data]="pieChartData"></google-chart>
+    </div>
+    <div class="col-sm-6">
+        <google-chart [data]="columnChartData"></google-chart>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 pl-8">
+        <google-chart [data]="gaugeChartData"></google-chart>
+    </div>
+    <div class="col-sm-6">
+        <google-chart [data]="scatterChartData"></google-chart>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <google-chart [data]="timelineChartData"></google-chart>
+    </div>
+    <div class="col-sm-6">
+        <google-chart [data]="lineChartData"></google-chart>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <google-chart [data]="comboChartData"></google-chart>
+    </div>
+    <div class="col-sm-6 text-center">
+        <google-chart [data]="tableChartData"></google-chart>
+    </div>
+</div> -->

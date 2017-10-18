@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+.card .action.top-right{
+    position: absolute;
+    right: 7px;
+    top: 5px;
+    cursor: pointer;
+}
+
+.card:hover{
+    background-color: #f8f8f8;
+}
+.card.selected{
+    background-color: #dfdfdf;
+}
+.cursor-pointer{
+    cursor: pointer;
+}
+.pl-8{
+    padding-left: 8rem!important;
+}
+
+.mt-5em{
+    margin-top: 5rem!important;
+}
+
+.plr-15{
+    padding: 0px 15px 0px 15px;
+}
+
