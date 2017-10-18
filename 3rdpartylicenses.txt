@@ -151,6 +151,10 @@ SOFTWARE.
 MIT
 MIT
 
+@angular/animations@4.4.4
+MIT
+MIT
+
 @angular/common@4.4.4
 MIT
 MIT
